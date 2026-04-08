@@ -1,12 +1,25 @@
 import './style.css'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
-// Selección del contenedor principal
-import { renderHome } from "./pages/home.js";
+import { renderHome } from './pages/home.js'
 
-const app = document.getElementById("app");
+// Inicializar AOS
+AOS.init({
+  duration: 1000,
+  once: true,
+})
+
+// Punto de entrada
+const app = document.getElementById("app")
 
 function init() {
-  renderHome(app);
+  renderHome(app)
+
+  // IMPORTANTE: refrescar AOS después de render dinámico
+  setTimeout(() => {
+    AOS.refresh()
+  }, 100)
 }
 
-init();
+init()
